@@ -1,9 +1,9 @@
 package br.com.refeicoescrud.model;
 
 public class Usuario {
+	private int idUsuario;
 	private String nome;
 	private String login;
-	private int idUsuario;
 	private String email;
 
 	public String getNome() {

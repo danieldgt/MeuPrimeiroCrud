@@ -15,7 +15,7 @@ public class ProdutoDAO extends GenericDAO {
 		try {
 			statement = connection().prepareStatement(sql);
 
-			statement.setString(1, produto.getNomeProduto());
+			statement.setString(1, produto.getDescricao());
 
 			int rowsInserted = statement.executeUpdate();
 			if (rowsInserted > 0) {
@@ -53,8 +53,8 @@ public class ProdutoDAO extends GenericDAO {
 					.prepareStatement("update produto set nome_produto=?" 
 									   + "where id_produto=?");
 			// Parameters start with 1
-			statement.setString(1, produto.getNomeProduto());
-			statement.setInt(2, produto.getIdProduto());
+			statement.setString(1, produto.getDescricao());
+			statement.setInt(2, produto.getId());
 			statement.executeUpdate();
 
 		} catch (SQLException e) {
@@ -75,8 +75,8 @@ public class ProdutoDAO extends GenericDAO {
 
 			while (rs.next()) {
 				Produto produto = new Produto();
-				produto.setIdProduto(rs.getInt("id_produto"));
-				produto.setNomeProduto(rs.getString("nome_produto"));
+				produto.setId(rs.getInt("id_produto"));
+				produto.setDescricao(rs.getString("nome_produto"));
 				produtos.add(produto);
 			}
 		} catch (SQLException e) {
