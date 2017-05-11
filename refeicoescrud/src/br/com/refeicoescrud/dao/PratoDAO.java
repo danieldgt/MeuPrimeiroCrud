@@ -39,7 +39,7 @@ public class PratoDAO extends GenericDAO {
 			if (rowsInserted > 0) {
 				System.out.println("\n Um novo 'prato' foi inserido com sucesso!");
 				for (Produto produto : prato.getProdutosContidos()) {
-					contemDAO.insert(prato.getIdPrato(), produto.getIdProduto());
+					contemDAO.insert(prato.getIdPrato(), produto.getId());
 				}
 			}
 		} catch (SQLException e) {
@@ -81,7 +81,7 @@ public class PratoDAO extends GenericDAO {
 
 			contemDAO.delete(prato.getIdPrato());
 			for (Produto produto : prato.getProdutosContidos()) {
-				contemDAO.insert(prato.getIdPrato(), produto.getIdProduto());
+				contemDAO.insert(prato.getIdPrato(), produto.getId());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

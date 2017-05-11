@@ -76,8 +76,8 @@ public class ContemDAO extends GenericDAO {
 
 			while (rs.next()) {
 				Produto produto = new Produto();
-				produto.setIdProduto(rs.getInt("id_produto"));
-				produto.setNomeProduto(rs.getString("nome_produto"));
+				produto.setId(rs.getInt("id_produto"));
+				produto.setDescricao(rs.getString("nome_produto"));
 				produtos.add(produto);
 			}
 		} catch (SQLException e) {

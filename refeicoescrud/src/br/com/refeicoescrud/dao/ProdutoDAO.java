@@ -98,8 +98,8 @@ public class ProdutoDAO extends GenericDAO {
 			ResultSet rs = statement.executeQuery();
 
 			if (rs.next()) {
-				produto.setIdProduto(rs.getInt("id_produto"));
-				produto.setNomeProduto(rs.getString("nome_produto"));
+				produto.setId(rs.getInt("id_produto"));
+				produto.setDescricao(rs.getString("nome_produto"));
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

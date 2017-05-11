@@ -110,7 +110,7 @@ public class PratoController extends HttpServlet {
 			List<Produto> prodList = produtoDAO.getAllProdutos();
 			List<Produto> prodContidos = new ArrayList<Produto>();
 			for (Produto produto : prodList) {
-				if(request.getParameter("produto_"+produto.getIdProduto())!=null){
+				if(request.getParameter("produto_"+produto.getId())!=null){
 					prodContidos.add(produto);
 				}
 			}

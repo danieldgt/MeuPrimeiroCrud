@@ -88,14 +88,14 @@ public class ProdutoController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Produto produto = new Produto();
 
-		produto.setNomeProduto(request.getParameter("nomeProduto"));
+		produto.setDescricao(request.getParameter("nomeProduto"));
 
 		String id = request.getParameter("idProduto");
 		try {
 			if (id == null || id.isEmpty()) {
 				produtoDAO.insert(produto);
 			} else {
-				produto.setIdProduto(Integer.parseInt(id));
+				produto.setId(Integer.parseInt(id));
 				produtoDAO.update(produto);
 			}
 			
