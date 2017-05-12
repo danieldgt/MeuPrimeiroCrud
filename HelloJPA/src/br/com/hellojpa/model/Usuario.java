@@ -1,12 +1,15 @@
 package br.com.hellojpa.model;
 
-import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 /**
@@ -21,7 +24,7 @@ import javax.persistence.Table;
 public class Usuario {
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Column(name = "id_usuario", nullable = false)
 	private Long id;
 
@@ -45,6 +48,17 @@ public class Usuario {
 
 	@Column(name = "info_usuario")
 	private String infoUSuario;
+
+	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+	private List<Prato> pratos;
+
+	public List<Prato> getPratos() {
+		return pratos;
+	}
+
+	public void setPratos(List<Prato> pratos) {
+		this.pratos = pratos;
+	}
 
 	public String getSenha() {
 		return senha;
