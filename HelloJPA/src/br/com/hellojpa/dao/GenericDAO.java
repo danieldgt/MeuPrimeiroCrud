@@ -1,6 +1,7 @@
 package br.com.hellojpa.dao;
 
 import java.io.Serializable;
+import java.lang.reflect.ParameterizedType;
 import java.util.List;
 
 import javax.persistence.EntityManager;
@@ -15,22 +16,25 @@ import javax.persistence.criteria.CriteriaQuery;
  * @version 1.0
  * @since 11/05/2017
  */
-public abstract class GenericDAO<T, I extends Serializable> extends ProdutorEntityManager {
+public abstract class GenericDAO<E, I extends Serializable> extends ProdutorEntityManager {
 
 	protected EntityManager entityManager;
 
-	private Class<T> persistedClass;
+	private Class<E> persistedClass;
 
-	protected GenericDAO() {
-		entityManager = createEntityManager();
-	}
 
-	protected GenericDAO(Class<T> persistedClass) {
-		this();
-		this.persistedClass = persistedClass;
-	}
+    protected GenericDAO(Class<E> persistedClass) {
+        this.persistedClass = persistedClass;
+        entityManager = createEntityManager();
+    }
+	
+    protected GenericDAO() {
+    	final ParameterizedType genericSuperclass = (ParameterizedType) this.getClass().getGenericSuperclass();
+        this.persistedClass = (Class<E>) genericSuperclass.getActualTypeArguments()[0];
+        entityManager = createEntityManager();
+    }
 
-	public T salvar(T entity) {
+	public E salvar(E entity) {
 		EntityTransaction t = entityManager.getTransaction();
 		t.begin();
 		entityManager.persist(entity);
@@ -39,7 +43,7 @@ public abstract class GenericDAO<T, I extends Serializable> extends ProdutorEnti
 		return entity;
 	}
 
-	public T atualizar(T entity) {
+	public E atualizar(E entity) {
 		EntityTransaction t = entityManager.getTransaction();
 		t.begin();
 		entityManager.merge(entity);
@@ -49,23 +53,23 @@ public abstract class GenericDAO<T, I extends Serializable> extends ProdutorEnti
 	}
 
 	public void remover(I id) {
-		T entity = encontrar(id);
+		E entity = encontrar(id);
 		EntityTransaction tx = entityManager.getTransaction();
 		tx.begin();
-		T mergedEntity = entityManager.merge(entity);
+		E mergedEntity = entityManager.merge(entity);
 		entityManager.remove(mergedEntity);
 		entityManager.flush();
 		tx.commit();
 	}
 
-	public List<T> getList() {
+	public List<E> getList() {
 		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<T> query = builder.createQuery(persistedClass);
+		CriteriaQuery<E> query = builder.createQuery(persistedClass);
 		query.from(persistedClass);
 		return entityManager.createQuery(query).getResultList();
 	}
 
-	public T encontrar(I id) {
+	public E encontrar(I id) {
 		return entityManager.find(persistedClass, id);
 	}
 }

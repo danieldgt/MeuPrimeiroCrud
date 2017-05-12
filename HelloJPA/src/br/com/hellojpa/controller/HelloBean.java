@@ -10,15 +10,13 @@ import br.com.hellojpa.model.Usuario;
 @SessionScoped
 public class HelloBean {
 
+	private UsuarioDAO usuarioDAO;
 
 	public HelloBean() {
-//		UsuarioDAO usuarioDAO = new UsuarioDAO();
+		usuarioDAO = new UsuarioDAO();
 		usuario = new Usuario();
-//		usuario = usuarioDAO.encontrar(14);
-		usuario.setNome("joao");
 	}
 
-	
 	private Usuario usuario;
 
 	private String name;
@@ -26,6 +24,7 @@ public class HelloBean {
 	private String nomeUsuario;
 
 	public String getNomeUsuario() {
+		usuario = usuarioDAO.encontrar(14l);
 		nomeUsuario = usuario.getNome();
 		return nomeUsuario;
 	}
