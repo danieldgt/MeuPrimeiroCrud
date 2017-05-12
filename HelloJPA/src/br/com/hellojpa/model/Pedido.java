@@ -46,7 +46,7 @@ public class Pedido {
 	private List<Prato> pratos;
 
 	@Column(name = "dt_criacao")
-	@Temporal(TemporalType.DATE)
+	@Temporal(TemporalType.TIMESTAMP)
 	Date dtCriacao;
 
 	public Long getId() {

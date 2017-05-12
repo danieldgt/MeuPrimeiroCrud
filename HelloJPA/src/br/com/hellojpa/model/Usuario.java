@@ -50,14 +50,14 @@ public class Usuario {
 	private String infoUSuario;
 
 	@OneToMany(mappedBy = "usuario", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Prato> pratos;
+	private List<Pedido> pedidos;
 
-	public List<Prato> getPratos() {
-		return pratos;
+	public List<Pedido> getPedidos() {
+		return pedidos;
 	}
 
-	public void setPratos(List<Prato> pratos) {
-		this.pratos = pratos;
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	public String getSenha() {

@@ -2,6 +2,14 @@ package br.com.hellojpa.util;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import javax.persistence.spi.PersistenceProviderResolverHolder;
+
+import org.hibernate.Session;
 
 import br.com.hellojpa.dao.PedidoDAO;
 import br.com.hellojpa.dao.PratoDAO;
@@ -23,21 +31,20 @@ public class HelloJPA {
 
 	@SuppressWarnings("unchecked")
 	public static void main(String[] args) {
-		/*
-		 * System.out .println(PersistenceProviderResolverHolder.
-		 * getPersistenceProviderResolver().getPersistenceProviders());
-		 * 
-		 * EntityManagerFactory factory =
-		 * Persistence.createEntityManagerFactory("testehibernate5");
-		 * EntityManager manager = factory.createEntityManager();
-		 * 
-		 * Session session = manager.unwrap(Session.class); Stream<Usuario>
-		 * stream = session.createQuery("select a from Usuario a").stream();
-		 * 
-		 * stream.forEach(u -> System.out.println(u.getNome()));
-		 * 
-		 * manager.close(); factory.close();
-		 */
+
+//		System.out
+//				.println(PersistenceProviderResolverHolder.getPersistenceProviderResolver().getPersistenceProviders());
+//
+//		EntityManagerFactory factory = Persistence.createEntityManagerFactory("testehibernate5");
+//		EntityManager manager = factory.createEntityManager();
+//
+//		Session session = manager.unwrap(Session.class);
+//		Stream<Usuario> stream = session.createQuery("select a from Usuario a").stream();
+//
+//		stream.forEach(u -> System.out.println(u.getNome()));
+//
+//		manager.close();
+//		factory.close();
 
 		UsuarioDAO usuarioDAO = new UsuarioDAO();
 		Usuario usuario = new Usuario();
@@ -58,12 +65,12 @@ public class HelloJPA {
 
 		pratoDAO.salvar(prato);
 		pratoDAO.salvar(prato2);
-		
+
 		List<Prato> pedidosPrato = new ArrayList<>();
 		pedidosPrato.add(prato);
 		pedidosPrato.add(prato2);
-		//List<Prato> pedidosPrato = new ArrayList<Prato>();
-		
+		// List<Prato> pedidosPrato = new ArrayList<Prato>();
+
 		PedidoDAO pedidoDAO = new PedidoDAO();
 		Pedido pedido = new Pedido();
 		pedido.setUsuario(usuario);
