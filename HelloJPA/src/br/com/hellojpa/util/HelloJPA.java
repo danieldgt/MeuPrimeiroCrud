@@ -2,14 +2,6 @@ package br.com.hellojpa.util;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Stream;
-
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
-import javax.persistence.spi.PersistenceProviderResolverHolder;
-
-import org.hibernate.Session;
 
 import br.com.hellojpa.dao.PedidoDAO;
 import br.com.hellojpa.dao.PratoDAO;
@@ -66,10 +58,10 @@ public class HelloJPA {
 		pratoDAO.salvar(prato);
 		pratoDAO.salvar(prato2);
 
-		List<Prato> pedidosPrato = new ArrayList<>();
+		List<Prato> pedidosPrato = new ArrayList();
+		// List<Prato> pedidosPrato = new ArrayList<Prato>();
 		pedidosPrato.add(prato);
 		pedidosPrato.add(prato2);
-		// List<Prato> pedidosPrato = new ArrayList<Prato>();
 
 		PedidoDAO pedidoDAO = new PedidoDAO();
 		Pedido pedido = new Pedido();
