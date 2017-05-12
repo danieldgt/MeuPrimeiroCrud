@@ -4,6 +4,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
+/**
+ * ProdutorEntityManager
+ * 
+ * @author Daniel Alencar Barros Tavares
+ * @version 1.0
+ * @since 11/05/2017
+ */
 public class ProdutorEntityManager {
 	private static final ThreadLocal<EntityManager> threadLocal = new ThreadLocal<EntityManager>();
 

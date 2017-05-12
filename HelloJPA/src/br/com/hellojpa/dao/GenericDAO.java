@@ -8,6 +8,13 @@ import javax.persistence.EntityTransaction;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 
+/**
+ * GenericDAO
+ * 
+ * @author Daniel Alencar Barros Tavares
+ * @version 1.0
+ * @since 11/05/2017
+ */
 public abstract class GenericDAO<T, I extends Serializable> extends ProdutorEntityManager {
 
 	protected EntityManager entityManager;

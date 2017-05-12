@@ -12,6 +12,13 @@ import br.com.hellojpa.model.Prato;
 import br.com.hellojpa.model.Produto;
 import br.com.hellojpa.model.Usuario;
 
+/**
+ * classe de exemplo de JPA
+ * 
+ * @author Daniel Alencar Barros Tavares
+ * @version 1.0
+ * @since 11/05/2017
+ */
 public class HelloJPA {
 
 	@SuppressWarnings("unchecked")
