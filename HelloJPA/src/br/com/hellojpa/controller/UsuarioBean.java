@@ -2,27 +2,59 @@ package br.com.hellojpa.controller;
 
 import java.util.List;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
+import javax.faces.bean.ViewScoped;
 
 import br.com.hellojpa.dao.UsuarioDAO;
 import br.com.hellojpa.model.Usuario;
 
-@ManagedBean
-@SessionScoped
+@ViewScoped
+@ManagedBean(name = "usuarioBean")
 public class UsuarioBean {
-	
+
 	private UsuarioDAO usuarioDAO;
 	private List<Usuario> usuarios;
 	private Usuario usuario;
-		
-	private String INSERT_EDIT = "usuario";
-	private String LIST_REMOVE = "listarUsuarios";
-	
+
 	public UsuarioBean() {
 		usuarioDAO = new UsuarioDAO();
 		usuario = new Usuario();
 		setUsuarios(usuarioDAO.getList());
+	}
+
+	public void saveUsuario() {
+		usuarioDAO.salvar(usuario);
+		setUsuarios(usuarioDAO.getList());
+		usuario = new Usuario();
+		FacesContext context = FacesContext.getCurrentInstance();
+
+		context.addMessage(null, new FacesMessage("Successful", "Your message: " + "teste"));
+		context.addMessage(null, new FacesMessage("Second Message", "Additional Message Detail"));
+
+		FacesContext.getCurrentInstance().addMessage(null,
+				new FacesMessage(FacesMessage.SEVERITY_INFO, "Info", "PrimeFaces Rocks."));
+		
+		System.out.println(context);
+
+	}
+
+	public void removeUsuario() {
+		usuarioDAO.remover(usuario.getId());
+		setUsuarios(usuarioDAO.getList());
+	}
+
+	public void editUsuario() {
+		usuario = usuarioDAO.encontrar(usuario.getId());
+	}
+
+	public void novoUsuario() {
+		usuario = new Usuario();
+	}
+
+	public void limpar() {
+		usuario = new Usuario();
 	}
 
 	public Usuario getUsuario() {
@@ -39,27 +71,5 @@ public class UsuarioBean {
 
 	public void setUsuarios(List<Usuario> usuarios) {
 		this.usuarios = usuarios;
-	}
-	
-	public String saveUsuario(){
-		usuarioDAO.salvar(usuario);
-		setUsuarios(usuarioDAO.getList());
-		return LIST_REMOVE;
-	}
-	
-	public String removeUsuario(String uid){
-		usuarioDAO.remover(Long.parseLong(uid));
-		setUsuarios(usuarioDAO.getList());
-		return LIST_REMOVE;
-	}
-	
-	public String editUsuario(String uid){
-		usuario = usuarioDAO.encontrar(Long.parseLong(uid));
-		return INSERT_EDIT;
-	}
-	
-	public String novoUsuario(){
-		usuario = new Usuario();
-		return INSERT_EDIT;
 	}
 }
