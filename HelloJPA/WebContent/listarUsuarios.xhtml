@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Usuários</title>
+</h:head>
+<h:body>
+	<h2>Lista de usuários</h2>
+	<h:form>
+		<h:dataTable 
+			value="#{usuarioBean.usuarios}" var="thisuser"
+			styleClass="order-table"
+	    	headerClass="order-table-header"
+	    	rowClasses="order-table-odd-row,order-table-even-row"
+	    	border="1"
+		>
+		
+		    <h:column>
+		    	<f:facet name="header">Nome</f:facet>
+		    	#{thisuser.nome}
+		    </h:column>
+		    <h:column>
+		    	<f:facet name="header">E-mail</f:facet>
+		    	#{thisuser.email}
+		    </h:column>
+		    <h:column>
+		    	<f:facet name="header">Login</f:facet>
+		    	#{thisuser.login}
+		    </h:column>
+		    <h:column>
+		    	<f:facet name="header">Endereço</f:facet>
+		    	#{thisuser.endereco}
+		    </h:column>
+		    <h:column>
+		    	<f:facet name="header">Informações</f:facet>
+		    	#{thisuser.infoUSuario}
+		    </h:column>
+		    <h:column>
+		    	<f:facet name="header">Nick</f:facet>
+		    	#{thisuser.nick}
+		    </h:column>
+		    <h:column>
+		    	<f:facet name="header">Senha</f:facet>
+		    	#{thisuser.senha}
+		    </h:column>
+		    <h:column>
+		    	<f:facet name="header">Ação</f:facet>
+		    		<h:commandButton value="Editar" action="#{usuarioBean.editUsuario(thisuser.id)}"></h:commandButton>
+		    		<h:commandButton value="Remover" action="#{usuarioBean.removeUsuario(thisuser.id)}"></h:commandButton>
+		    </h:column>
+		</h:dataTable>
+		<h:commandButton value="Novo Usuário" action="#{usuarioBean.novoUsuario()}"></h:commandButton> <br/>
+		<h:commandButton value="Inicio" action="index"></h:commandButton>
+	</h:form>
+</h:body>
+</html>

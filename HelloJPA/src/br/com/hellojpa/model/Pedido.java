@@ -45,7 +45,7 @@ public class Pedido {
 			@JoinColumn(name = "id_usuario") })
 	private List<Prato> pratos;
 
-	@Column(name = "dt_criacao")
+	@Column(name = "dt_criacao", columnDefinition= "TIMESTAMP WITH TIME ZONE")
 	@Temporal(TemporalType.TIMESTAMP)
 	Date dtCriacao;
 

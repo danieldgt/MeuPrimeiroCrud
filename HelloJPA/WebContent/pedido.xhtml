@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Pedido</title>
+</h:head>
+<h:body>
+	<h2>Edição/criação de pedidos</h2>
+	<h:form>
+		Usuário: 
+		<h:selectOneMenu value="#{pedidoBean.selectedUsuario}">
+   			<f:selectItems value="#{pedidoBean.allUsuarios}" var="u"
+   			itemLabel="#{u.nome}" itemValue="#{u.id}" />
+   		</h:selectOneMenu> <br/>
+   		Prato: 
+		<h:selectOneMenu value="#{pedidoBean.selectedPrato}">
+   			<f:selectItems value="#{pedidoBean.allPratos}" var="p"
+   			itemLabel="#{p.dsPrato}" itemValue="#{p.id}" />
+   		</h:selectOneMenu> <br/>
+   		Descrição: <h:inputText value="#{pedidoBean.pedido.dsPedido}" /> <br/>
+   		
+		<h:commandButton value="Salvar" action="#{pedidoBean.savePedido}"></h:commandButton> <br/>
+		<h:commandButton value="Inicio" action="index"></h:commandButton>
+		<h:commandButton value="Voltar" action="listarPedidos"></h:commandButton>
+	</h:form>
+</h:body>
+</html>

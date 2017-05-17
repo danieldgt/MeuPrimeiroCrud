@@ -67,5 +67,10 @@ public class Produto {
 	public void setObsProduto(String obsProduto) {
 		this.obsProduto = obsProduto;
 	}
+	
+	@Override
+	public String toString() {
+		return "["+this.id+"] "+ this.dsProduto;
+	}
 
 }

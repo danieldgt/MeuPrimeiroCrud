@@ -24,7 +24,7 @@ public class HelloBean {
 	private String nomeUsuario;
 
 	public String getNomeUsuario() {
-		usuario = usuarioDAO.encontrar(14l);
+		usuario = usuarioDAO.encontrar(1l);
 		nomeUsuario = usuario.getNome();
 		return nomeUsuario;
 	}

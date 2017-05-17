@@ -41,6 +41,9 @@ public class Prato {
 	@JoinTable(name = "prato_has_produto", joinColumns = { @JoinColumn(name = "id_prato") }, inverseJoinColumns = {
 			@JoinColumn(name = "id_produto") })
 	private List<Produto> produtos;
+	
+	@Column(name = "preco_prato")
+	private String precoPrato;
 
 	public Long getId() {
 		return id;
@@ -72,6 +75,19 @@ public class Prato {
 
 	public void setProdutos(List<Produto> produtos) {
 		this.produtos = produtos;
+	}	
+
+	public String getPrecoPrato() {
+		return precoPrato;
+	}
+
+	public void setPrecoPrato(String precoPrato) {
+		this.precoPrato = precoPrato;
+	}
+	
+	@Override
+	public String toString() {
+		return "["+this.id+"] "+ this.dsPrato;
 	}
 
 }

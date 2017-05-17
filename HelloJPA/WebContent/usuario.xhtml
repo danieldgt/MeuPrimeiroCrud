@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head>
+	<title>Usuário</title>
+</h:head>
+<h:body>
+	<h2>Edição/criação de usuários</h2>
+	<h:form>
+		Nome: <h:inputText value="#{usuarioBean.usuario.nome}" /> <br/>
+		Email: <h:inputText value="#{usuarioBean.usuario.email}" /> <br/>
+		Login: <h:inputText value="#{usuarioBean.usuario.login}" /> <br/>
+		Endereço: <h:inputText value="#{usuarioBean.usuario.endereco}" /> <br/>
+		Informações: <h:inputText value="#{usuarioBean.usuario.infoUSuario}" /> <br/>
+		Nick: <h:inputText value="#{usuarioBean.usuario.nick}" /> <br/>
+		Senha: <h:inputSecret value="#{usuarioBean.usuario.senha}" /> <br/>
+		<h:commandButton value="Salvar" action="#{usuarioBean.saveUsuario}"></h:commandButton> <br/>
+		<h:commandButton value="Inicio" action="index"></h:commandButton>
+		<h:commandButton value="Voltar" action="listarUsuarios"></h:commandButton>
+		
+	</h:form>
+</h:body>
+</html>
